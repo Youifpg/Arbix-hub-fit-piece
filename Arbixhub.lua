@@ -1,3 +1,4 @@
+-- the script is from touka arbix hub pls if you want it give credit and if you steal ir you are gay
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
 -- Window or baseplate Make tab or section
