@@ -25,42 +25,49 @@ Section:CreateButton("Get", function()
 end)
 
 local Section = Window:NewSection("SWORDS")
+local swordName -- Declare swordName as a local variable
 
-local swordTextBox = Section:CreateTextbox("Enter Amount", function(text)
+local swordTextBox = Section:CreateTextbox("Enter Sword Name", function(text)
+    swordName = text -- Store the sword name input
 end)
 
 Section:CreateButton("Get the sword", function()
-    if text and text ~= "" then
-      local args = {
-    [1] = text
-}
+    if swordName and swordName ~= "" then
+        local args = {
+            [1] = swordName
+        }
 
-game:GetService("ReplicatedStorage").Remotes2.Inventory:FireServer(unpack(args))
-    end)
-
+        game:GetService("ReplicatedStorage").Remotes2.Inventory:FireServer(unpack(args))
+    end
+end)
 
 local Section = Window:NewSection("FRUITS")  
-CreateButton("Get all fruit", function()
-      local args = {
-    [1] = "Rare", "Uncommon", "Common"
-}
+Section:CreateButton("Get all fruit", function()
+    local args = {
+        [1] = "Rare, Uncommon, Common" -- Combine all fruit types into a single string
+    }
 
-game:GetService("Players").LocalPlayer.PlayerGui.SpinUI.ScreenGui.Accept.Spin.Reward:FireServer(unpack(args))
-    end)
-      
-local Section = Window:NewSection("CLICK AND OTHER")
-  
-  CreateButton("Click Asta blade (1%)", function()
-    while true do  fireclickdetectorworkspace["Asta Blade"].ClickDetector wait(0.1) end
-    end)
-
-  CreateButton("Click SHADOW BLADE (0.5%)", function()
-    while true do  fireclickdetectorworkspace["Shadown Blade"].ClickDetector wait(0.1) end
-    end)
-
-  CreateButton("No Cooldown", function()
-      g = hookfunction(wait, function(seconds)
-return g(0)
+    game:GetService("Players").LocalPlayer.PlayerGui.SpinUI.ScreenGui.Accept.Spin.Reward:FireServer(unpack(args))
 end)
+
+local Section = Window:NewSection("CLICK AND OTHER")
+
+Section:CreateButton("Click Asta blade (1%)", function()
+    while true do  
+        workspace["Asta Blade"].ClickDetector:Click() 
+        wait(0.1) 
+    end
+end)
+
+Section:CreateButton("Click SHADOW BLADE (0.5%)", function()
+    while true do  
+        workspace["Shadow Blade"].ClickDetector:Click() 
+        wait(0.1) 
+    end
+end)
+
+Section:CreateButton("No Cooldown", function()
+    local g = hookfunction(wait, function(seconds)
+        return g(0)
     end)
-      
+end)
