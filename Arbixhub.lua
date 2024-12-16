@@ -45,7 +45,7 @@ end)
 local Section = Window:NewSection("FRUITS")  
 Section:CreateButton("Get all fruit", function()
     local args = {
-        [1] = "Rare, Uncommon, Common" -- Combine all fruit types into a single string
+        [1] = "Rare", "Uncommon", "Common" -- Combine all fruit types into a single string
     }
 
     game:GetService("Players").LocalPlayer.PlayerGui.SpinUI.ScreenGui.Accept.Spin.Reward:FireServer(unpack(args))
